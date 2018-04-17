@@ -31,4 +31,6 @@ tidy_mortality_models %>%
          med_cause = median(estimate, na.rm = TRUE)) %>% 
   ungroup %>% 
   mutate(cause = fct_reorder2(cause, med_cause, sd_cause, .desc = TRUE)) %>% 
-  ggplot(aes(x = estimate, y = cause, fill = sd_cause)) + geom_density_ridges() + scale_fill_viridis_c() + geom_vline(xintercept = 0)
+  ggplot(aes(x = estimate, y = cause, fill = sd_cause)) + 
+  geom_density_ridges() + scale_fill_viridis_c() + geom_vline(xintercept = 0) +
+  labs(x = "Change with time")
